@@ -1,0 +1,9 @@
+- name: Copy index.html to application servers
+  hosts: all
+  become: true
+
+  tasks:
+    - name: Copy index.html file
+      copy:
+        src: /usr/src/devops/index.html
+        dest: /opt/devops/index.html
