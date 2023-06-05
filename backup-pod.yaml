@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: backup-pod
+spec:
+  containers:
+  - name: backup-container
+    image: <image_name>
+    resources:
+      limits:
+        cpu: "1"
+        memory: "1Gi"
+      requests:
+        cpu: "0.5"
+        memory: "512Mi"
+    command: ["kubectl", "exec", "<pod_name>", "--", "tar", "cvzf", "/backup/<backup_filename>", "/path/to/data"]
+    volumeMounts:
+    - name: backup-volume
+      mountPath: /backup
+  volumes:
+  - name: backup-volume
+    emptyDir: {}
