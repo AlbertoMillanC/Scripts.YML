@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mi-aplicacion
+  name: App
 spec:
   replicas: 3
   selector:
@@ -24,10 +24,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: mi-servicio
+  name: App-service
 spec:
   selector:
-    app: mi-aplicacion
+    app: App
   ports:
     - protocol: TCP
       port: 80
